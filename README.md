@@ -4,7 +4,7 @@
 ## Reproduce
 
 ### 0. Environment
-- Gramine@v1.0
+- [Gramine@84b331f]
 - Ubuntu 20.04 LTS
 - Rust@1.57.0
 
@@ -88,13 +88,13 @@ debug: adding pages to enclave: 0xfa8a000-0xfa9a000 [REG:RW-] (sig_stack) measur
 debug: adding pages to enclave: 0xfa7a000-0xfa8a000 [REG:RW-] (sig_stack) measured
 debug: adding pages to enclave: 0xfa6a000-0xfa7a000 [REG:RW-] (sig_stack) measured
 debug: adding pages to enclave: 0xfa5a000-0xfa6a000 [REG:RW-] (sig_stack) measured
-debug: adding pages to enclave: 0xb634000-0xb681000 [REG:R-X] (code) measured
-debug: adding pages to enclave: 0xb681000-0xb685000 [REG:RW-] (data) measured
-debug: adding pages to enclave: 0xb685000-0xfa5a000 [REG:RW-] (bss) measured
-debug: adding pages to enclave: 0x10000-0xb634000 [REG:RWX] (free)
+debug: adding pages to enclave: 0xf635000-0xf682000 [REG:R-X] (code) measured
+debug: adding pages to enclave: 0xf682000-0xf686000 [REG:RW-] (data) measured
+debug: adding pages to enclave: 0xf686000-0xfa5a000 [REG:RW-] (bss) measured
+debug: adding pages to enclave: 0x10000-0xf635000 [REG:RWX] (free)
 debug: enclave initializing:
 debug:     enclave id:   0x000000000ffff000
-debug:     mr_enclave:   e5d76d6120fcad2579fc38ab5eb18cc28f861d9302d7f035f4c3688dfc0fa475
+debug:     mr_enclave:   ccab698129b7968919310d9b57791f62395bf0c34575299f33b316dea2ac2c9b
 -----------------------------------------------------------------------------------------------------------------------
 Gramine detected the following insecure configurations:
 
@@ -105,13 +105,15 @@ Gramine detected the following insecure configurations:
 Gramine will continue application execution, but this configuration must not be used in production!
 -----------------------------------------------------------------------------------------------------------------------
 
+warning: 'loader.preload' is deprecated; please switch to 'loader.entrypoint'
 warning: DkVirtualMemoryProtect is unimplemented in Linux-SGX PAL
+[::] debug: Gramine was built from commit: 84b331fe7da92675a888837eb54c2b33a3de4518
 [::] debug: Host: Linux-SGX
 [::] debug: LibOS xsave_enabled 1, xsave_size 0x340(832), xsave_features 0x7
-[::] debug: Initial VMA region 0xb5bb000-0xb634000 (LibOS) bookkeeped
+[::] debug: Initial VMA region 0xf57c000-0xf5f6000 (LibOS) bookkeeped
 [::] debug: Initial VMA region 0xfffa000-0x10000000 (manifest) bookkeeped
-[::] debug: ASLR top address adjusted to 0x977b000
-[::] debug: Shim loaded at 0xb5bb000, ready to initialize
+[::] debug: ASLR top address adjusted to 0x60ea000
+[::] debug: Shim loaded at 0xf57c000, ready to initialize
 [::] debug: Mounting root as chroot filesystem: from file:. to /
 [::] debug: Mounting special proc filesystem: /proc
 [::] debug: Mounting special dev filesystem: /dev
@@ -121,27 +123,26 @@ warning: DkVirtualMemoryProtect is unimplemented in Linux-SGX PAL
 [P1:T1:] debug: Mounting as chroot filesystem: from dev:/dev/kmsg to /dev/kmsg
 [P1:T1:] debug: Mounting as chroot filesystem: from file:/lib/x86_64-linux-gnu to /lib/x86_64-linux-gnu
 [P1:T1:] debug: Mounting as chroot filesystem: from file:/usr//lib/x86_64-linux-gnu to /usr//lib/x86_64-linux-gnu
-[P1:T1:hello-world] debug: Allocating stack at 0x0 (size = 262144)
+[P1:T1:hello-world] debug: Creating pipe: pipe.srv:96810eb86e4b27274cc343cb3ae6b2a1a638b40191ecddb8a241dfc168129419
+[P1:T1:hello-world] debug: Allocating stack at 0 (size = 262144)
 [P1:T1:hello-world] debug: loading "file:./hello-world"
 [P1:T1:hello-world] debug: find_interp: searching for interpreter: /lib/ld-linux-x86-64.so.2
 [P1:T1:hello-world] debug: loading "file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2"
+[P1:T1:hello-world] debug: Creating pipe: pipe.srv:3ade08ecffcca8f6263de75ddb76698fad67d2676f52748f7fa699814f58b716
 [P1:T1:hello-world] debug: Creating pipe: pipe.srv:1
-debug: sock_getopt (fd = 12, sockopt addr = 0x7ffc75f17560) is not implemented and always returns 0
 [P1:T1:hello-world] debug: Shim process initialized
 [P1:shim] debug: IPC worker started
 [P1:T1:hello-world] warning: Not supported flag (0x3001) passed to arch_prctl
-[P1:T1:hello-world] debug: glibc register library /lib/x86_64-linux-gnu/libgcc_s.so.1 loaded at 0x0964b000
-[P1:T1:hello-world] debug: glibc register library /lib/librt.so.1 loaded at 0x09646000
-[P1:T1:hello-world] debug: glibc register library /lib/libpthread.so.0 loaded at 0x09641000
-[P1:T1:hello-world] debug: glibc register library /lib/libm.so.6 loaded at 0x09566000
-[P1:T1:hello-world] debug: glibc register library /lib/libdl.so.2 loaded at 0x09561000
-[P1:T1:hello-world] debug: glibc register library /lib/libc.so.6 loaded at 0x09367000
-[P1:T1:hello-world] debug: add fd 4 (handle 0xb57ad58) to epoll handle 0xb57ac98
-[P1:T1:hello-world] debug: Creating pipe: pipe.srv:a1af597cd63591b24390482ea76c568d5a0febf14b4e458eda7c8e24795da231
-debug: sock_getopt (fd = 22, sockopt addr = 0x7ffc75f17560) is not implemented and always returns 0
-debug: sock_getopt (fd = 23, sockopt addr = 0x7ffc75f17560) is not implemented and always returns 0
-debug: sock_getopt (fd = 24, sockopt addr = 0x7ffc75f17560) is not implemented and always returns 0
-[P1:T1:hello-world] debug: add fd 8 (handle 0xb57ae88) to epoll handle 0xb57ac98
+[P1:T1:hello-world] debug: glibc register library /lib/x86_64-linux-gnu/libgcc_s.so.1 loaded at 0x05fba000
+[P1:T1:hello-world] debug: glibc register library /lib/librt.so.1 loaded at 0x05fb5000
+[P1:T1:hello-world] debug: glibc register library /lib/libpthread.so.0 loaded at 0x05fb0000
+[P1:T1:hello-world] debug: glibc register library /lib/libm.so.6 loaded at 0x05ed5000
+[P1:T1:hello-world] debug: glibc register library /lib/libdl.so.2 loaded at 0x05ed0000
+[P1:T1:hello-world] debug: glibc register library /lib/libc.so.6 loaded at 0x05cd6000
+[P1:T1:hello-world] debug: Creating pipe: pipe.srv:74e3ec6a6c5bdcf4048afcbe345f907a081650da1d05de09762ab8db3bb90090
+[P1:T1:hello-world] debug: add fd 4 (handle 0xb615ba0) to epoll handle 0xb615ae8
+[P1:T1:hello-world] debug: Creating pipe: pipe.srv:785f8dc0d3e4f8141e475ccee685f1e2ba34f68f9b916da75c976ef0c248e7b1
+[P1:T1:hello-world] debug: add fd 8 (handle 0xb615ca8) to epoll handle 0xb615ae8
 [P1:T1:hello-world] warning: Unsupported system call 435
 [P1:T2:hello-world] warning: Unsupported system call prctl
 [P1:T1:hello-world] warning: Unsupported system call 435
@@ -162,16 +163,16 @@ hello world
 [P1:T4:hello-world] debug: ---- shim_exit (returning 0)
 [P1:T9:hello-world] debug: ---- shim_exit (returning 0)
 [P1:T6:hello-world] debug: ---- shim_exit (returning 0)
-[P1:T7:hello-world] debug: ---- shim_exit (returning 0)
 [P1:T8:hello-world] debug: ---- shim_exit (returning 0)
+[P1:T7:hello-world] debug: ---- shim_exit (returning 0)
 [P1:T5:hello-world] debug: ---- shim_exit (returning 0)
-[P1:T4:hello-world] debug: Installed async event at 1641355827743134
-[P1:T9:hello-world] debug: Installed async event at 1641355827743176
+[P1:T4:hello-world] debug: Installed async event at 1641364560302448
+[P1:T9:hello-world] debug: Installed async event at 1641364560302451
 [P1:shim] debug: Async worker thread started
-[P1:T6:hello-world] debug: Installed async event at 1641355827743180
-[P1:T7:hello-world] debug: Installed async event at 1641355827743186
-[P1:T8:hello-world] debug: Installed async event at 1641355827743187
-[P1:T5:hello-world] debug: Installed async event at 1641355827743187
+[P1:T6:hello-world] debug: Installed async event at 1641364560302472
+[P1:T8:hello-world] debug: Installed async event at 1641364560302489
+[P1:T7:hello-world] debug: Installed async event at 1641364560302504
+[P1:T5:hello-world] debug: Installed async event at 1641364560302504
 [P1:shim] debug: Thread exited, cleaning up
 [P1:shim] debug: Thread exited, cleaning up
 [P1:shim] debug: Thread exited, cleaning up
@@ -179,6 +180,8 @@ hello world
 [P1:shim] debug: Thread exited, cleaning up
 [P1:shim] debug: Thread exited, cleaning up
 [P1:T2:hello-world] debug: ---- shim_exit (returning 0)
-[P1:T2:hello-world] debug: Installed async event at 1641355827873458
+[P1:T2:hello-world] debug: Installed async event at 1641364560375101
 [P1:shim] debug: Thread exited, cleaning up
 ```
+
+[Gramine@84b331f]: https://github.com/gramineproject/gramine/commit/84b331fe7da92675a888837eb54c2b33a3de4518

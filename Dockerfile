@@ -10,7 +10,7 @@ WORKDIR /output
 
 RUN cd /gramine/target/release && cp hello-world /output
 
-FROM sammyne/gramine:1.0-ubuntu20.04 AS builder
+FROM sammyne/gramine:84b331f-ubuntu20.04 AS builder
 
 WORKDIR /root/gramine/Examples/hello-world
 
