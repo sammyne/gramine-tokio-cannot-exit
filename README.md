@@ -1,5 +1,6 @@
 # gramine-tokio-cannot-exit
 
+Fixed by [PR#340](https://github.com/gramineproject/gramine/pull/340).
 
 ## Reproduce
 
